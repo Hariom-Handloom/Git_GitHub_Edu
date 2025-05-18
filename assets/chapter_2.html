@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Git?</title>
+    <style>
+        table,td,th{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📘 Chapter 2: What is Git?</h2>
+    <hr>
+    <h3>🔰 Introduction</h3>
+    <p>Now that you understand <b>version control</b>, let’s learn about <b>Git</b> — the most popular and powerful version control system used today by developers all around the world.</p>
+    <p>Git is an <b>open-source distributed version control system (DVCS)</b>, originally developed by <b>Linus Torvalds</b> in 2005 (the creator of Linux).</p>
+    <hr>
+    <h3>🧾 What is Git?</h3>
+    <p style="font-style: italic;">Git is a distributed version control system that tracks changes in your files and allows multiple people to collaborate on the same project, even offline.</p>
+    <p>
+        Git lets you:
+        <ul>
+            <li>Save versions of your project over time</li>
+            <li>View or go back to earlier versions</li>
+            <li>Work with others without overwriting each other's code</li>
+            <li>Sync your work to remote servers like <b>GitHub</b></li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🏗️ How Does Git Work?</h3>
+    <p>Git works like a <b>timeline of snapshots</b>.</p>
+    <p>Every time you save (called a <b>commit</b>), Git stores a snapshot of the current state of your project. If something breaks, you can travel back to a previous snapshot.</p>
+    <p><b>Key Concepts:</b>
+        <table>
+            <tr>
+                <th>Concept</th>
+                <th>Meaning</th>
+            </tr>
+            <tr>
+                <td>Repository (Repo)</td>
+                <td>A project managed by Git</td>
+            </tr>
+            <tr>
+                <td>Commit</td>
+                <td>A saved snapshot of your files</td>
+            </tr>
+            <tr>
+                <td>Branch</td>
+                <td>A parallel version of your project</td>
+            </tr>
+            <tr>
+                <td>Merge</td>
+                <td>Combining changes from one branch to another</td>
+            </tr>
+            <tr>
+                <td>Clone</td>
+                <td>Making a copy of a remote Git project</td>
+            </tr>
+            <tr>
+                <td>Remote</td>
+                <td>A Git repository hosted on a server (like GitHub)</td>
+            </tr>
+            <tr>
+                <td>Push</td>
+                <td>Uploading local commits to a remote</td>
+            </tr>
+            <tr>
+                <td>Pull</td>
+                <td>Downloading the latest commits from a remote</td>
+            </tr>
+        </table>
+    </p>
+    <hr>
+    <h3>📦 What Git Tracks</h3>
+    <p>Git mainly tracks:
+        <ul>
+            <li>Source code files</li>
+            <li>Text files (README, docs, etc.)</li>
+            <li>Folder structures</li>
+            <li>File changes (additions, deletions, modifications)</li>
+        </ul>
+    </p>
+    <p style="font-style: italic;">🔒 Git doesn’t store compiled files (like .exe, .class) or large files unless configured with extensions like Git LFS.</p>
+    <hr>
+    <h3>🔍 Local vs. Remote Git</h3>
+    <table>
+        <tr>
+            <th>Aspect</th>
+            <th>Local Git</th>
+            <th>Remote Git</th>
+        </tr>
+        <tr>
+            <td>Works Offline</td>
+            <td>✅ Yes</td>
+            <td>❌ No</td>
+        </tr>
+        <tr>
+            <td>Access</td>
+            <td>Your computer</td>
+            <td>Server (e.g., GitHub)</td>
+        </tr>
+        <tr>
+            <td>Speed</td>
+            <td>Very fast</td>
+            <td>Depends on internet</td>
+        </tr>
+        <tr>
+            <td>Purpose</td>
+            <td>Track changes locally</td>
+            <td>Share, collaborate, back up</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>💡 Git vs. Other Version Control Systems</h3>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Git</th>
+            <th>Subversion (SVN)</th>
+            <th>CVS</th>
+        </tr>
+        <tr>
+            <td>Distributed</td>
+            <td>✅</td>
+            <td>❌</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <td>Works Offline</td>
+            <td>✅</td>
+            <td>❌</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <td>Performance</td>
+            <td>Fast</td>
+            <td>Moderate</td>
+            <td>Slow</td>
+        </tr>
+        <tr>
+            <td>Popularity</td>
+            <td>🌟 Most Used</td>
+            <td>Used in legacy projects</td>
+            <td>Rare</td>
+        </tr>
+        <tr>
+            <td>Learning Curve</td>
+            <td>Moderate</td>
+            <td>Easy</td>
+            <td>Moderate</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🧪 How Git Stores Data</h3>
+    <p>Git doesn’t store file differences like some older systems. Instead, it stores <b>snapshots</b> of the entire project. Only if files haven't changed, Git links them to the previous snapshot — which saves space.</p>
+    <p>🔁 Git Workflow (Simplified)
+        <ol>
+            <li>Working Directory: Where you edit files</li>
+            <li>Staging Area (Index): Where you prepare changes</li>
+            <li>Repository (.git folder): Where committed changes are saved</li>
+        </ol>
+    </p>
+    <p style="font-style: italic;">This three-stage architecture gives you full control over what you want to commit.</p>
+    <hr>
+    <h3>🎯 Real-Life Analogy</h3>
+    <p>
+        Imagine you're writing a book:
+        <ul>
+            <li>You save different versions as you write chapters.</li>
+            <li>Sometimes you branch off to try a different ending.</li>
+            <li>You compare both versions.</li>
+            <li>You pick the better one and continue from there.</li>
+        </ul>
+        That’s exactly how Git works!
+    </p>
+    <hr>
+    <h3>✅ Advantages of Git</h3>
+    <ul>
+        <li>Free and open source</li>
+        <li>Works offline</li>
+        <li>Blazing fast operations</li>
+        <li>Tracks every change</li>
+        <li>Supports branches and merging</li>
+        <li>Used by GitHub, GitLab, Bitbucket</li>
+        <li>Great for solo and team projects</li>
+    </ul>
+    <hr>
+    <h3>❗ Common Misconceptions</h3>
+    <table>
+        <tr>
+            <th>Misconception</th>
+            <th>Reality</th>
+        </tr>
+        <tr>
+            <td>Git and GitHub are the same</td>
+            <td>❌ No. Git is the tool, GitHub is the platform that hosts Git repos.</td>
+        </tr>
+        <tr>
+            <td>You need to know coding to use Git</td>
+            <td>❌ Git works with all types of files. Even non-coders use Git for version control.</td>
+        </tr>
+        <tr>
+            <td>Git is only for teams</td>
+            <td>❌ Solo developers benefit just as much.</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🔚 Conclusion</h3>
+    <p>Git is the <b>core tool for modern developers</b>. Whether you're building websites, apps, or managing any set of files that change over time, Git provides structure, safety, and flexibility.</p>
+    <p>It’s powerful, fast, and flexible — and you’ve just taken the first step in mastering it!</p>
+    <hr>
+    <h3 style="font-style: italic;">🚀 Up Next: Chapter 3 – Installing Git and First-Time Setup</h3>
+    <p style="font-style: italic;">We’ll guide you step-by-step through installing Git and setting up your name and email so your commits are properly recorded</p>
+    <hr>
+    <a href="chapter_1.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_3.html"><button>Next</button></a>
+</body>
+</html>

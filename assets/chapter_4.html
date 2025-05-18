@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Repo</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td,th{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📘 Chapter 4: Creating Your First Git Repository</h2>
+    <hr>
+    <h3>📦 What is a Git Repository?</h3>
+    <p>A <b>Git repository (or "repo")</b> is a special folder where Git tracks and manages versions of your files.
+    <br><br>
+    There are two types:
+    <ul>
+        <li><b>Local Repository:</b> On your computer.</li>
+        <li><b>Remote Repository:</b> Hosted on a platform like GitHub, GitLab, or Bitbucket.</li>
+    </ul>
+    In this chapter, we'll focus on creating and managing a <b>local Git repository</b>.
+    </p>
+    <hr>
+    <h3>🔨 Step 1: Create a Project Folder</h3>
+    <p>Start by creating a <b>new folder</b> for your project:
+    <br><br>
+    Example:
+    <br>
+    <code>MyFirstGitProject/</code>
+    <br><br>
+    You can do this using File Explorer or the terminal:
+    <br>
+    <code>mkdir MyFirstGitProject</code>
+    <br>
+    <code>cd MyFirstGitProject</code>
+    <br>
+    </p>
+    <hr>
+    <h3>🧪 Step 2: Initialize the Repository</h3>
+    <p>Inside the folder, initialize a Git repository using:
+        <br><br>
+        <code>git init</code>
+        <br><br>
+        ✅ This command creates a hidden folder named .git, where Git stores all its tracking information (commits, branches, logs, etc.).
+        <br>
+        You’ll see:
+        <br><br>
+        <code>Initialized empty Git repository in /your/path/MyFirstGitProject/.git/</code>
+        <br><br>Now your folder is officially under version control!
+    </p>
+    <hr>
+    <h3>📄 Step 3: Create Some Files</h3>
+    <p>Let’s add a sample file to the folder:
+        <br><br>
+        <code>echo "Hello, Git!" > hello.txt</code>
+        <br><br>
+        Now list the files:
+        <br><br>
+        <code>ls</code>
+        <br><br>
+        You should see:
+        <br><br>
+        <code>hello.txt</code>
+        <br><br>
+        But Git is not tracking this file yet.
+    </p>
+    <hr>
+    <h3>🕵️ Step 4: Check Git Status</h3>
+    <p>Run:
+        <br><br>
+        <code>git status</code>
+        <br><br>
+        You’ll see:
+        <br><br>
+        <code>Untracked files:<br>
+            (use "git add <file>..." to include in what will be committed)<br>
+            hello.txt
+        </code>
+        <br><br>
+        This means Git sees the file but is not tracking it yet.
+    </p>
+    <hr>
+    <h3>➕ Step 5: Add Files to Staging Area</h3>
+    <p>To start tracking <code>hello.txt</code>, add it to Git’s <b>staging area</b>:
+        <br><br>
+        <code>git add hello.txt</code>
+        <br><br>
+        You can also add all files:
+        <br><br>
+        <code>git add .</code>
+        <br><br>
+        Now run:
+        <br><br>
+        <code>git status</code>
+        <br><br>
+        You’ll see:
+        <br><br>
+        <code>Changes to be committed:</code><br><code>new file:   hello.txt</code>
+        <br><br>
+        This means the file is staged and ready to be saved (committed).
+    </p>
+    <hr>
+    <h3>💾 Step 6: Commit Your Changes</h3>
+    <p>To save a snapshot of your project, run:
+        <br><br>
+        <code>git commit -m "Initial commit"</code>
+        <br><br>
+        The <code>-m</code> flag lets you add a short message explaining what you’ve changed.
+        <br>
+        Now your first Git snapshot is saved!
+    </p>
+    <hr>
+    <h3>📂 Step 7: View Your Commit History</h3>
+    <p>Use this command to see your commits:
+        <br><br>
+        <code>git log</code>
+        <br><br>
+        You’ll see something like:
+        <br><br>
+        <code>commit 3b65dfea... <br>
+        Author: Your Name <youremail@example.com> <br>
+        Date:   Fri May 16 13:00 2025 <br>
+        <br>
+        Initial commit
+        </code>
+        <br><br>
+        Press <code>q</code> to exit the log view.
+    </p>
+    <hr>
+    <h3>🧹 Git File States Overview</h3>
+    <table>
+        <tr>
+            <th>File State</th>
+            <th>Meaning</th>
+        </tr>
+        <tr>
+            <td>Untracked</td>
+            <td>Git sees the file but doesn’t track it yet</td>
+        </tr>
+        <tr>
+            <td>Staged</td>
+            <td>File is ready to be committed</td>
+        </tr>
+        <tr>
+            <td>Committed</td>
+            <td>File is safely stored in Git history</td>
+        </tr>
+        <tr>
+            <td>Modified</td>
+            <td>File has been changed since last commit</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>📘 Recap: Basic Git Workflow</h3>
+    <ol>
+        <li>Create project folder</li>
+        <li>Initialize Git → <code>git init</code></li>
+        <li>Add files → <code>git add .</code></li>
+        <li>Save snapshot → <code>git commit -m "message"</code></li>
+    </ol>
+    <hr>
+    <h3>🧠 Best Practices</h3>
+    <ul>
+        <li>Always write clear commit messages</li>
+        <li>Commit often: after every logical change</li>
+        <li>Use <code>.gitignore</code> to ignore unwanted files (explained in future chapters)</li>
+    </ul>
+    <hr>
+    <h3>❓ FAQ</h3>
+    <p><b>Q: What if I forget to use <code>git init</code>?</b><br>A: Git won’t track anything unless you initialize the folder.</p>
+    <p><b>Q: Can I delete <code>.git</code> folder?</b><br>A: You can, but it will erase all Git history and make the folder non-version-controlled again.</p>
+    <hr>
+    <h3>🔚 Conclusion</h3>
+    <p>You’ve now created your first Git repository, added files, and made your first commit. This is the foundation of Git-based workflows.</p>
+    <hr>
+    <h3 style="font-style: italic;">🎯 Up Next: Chapter 5 – Making Changes, Staging, and Committing</h3>
+    <hr>
+    <a href="chapter_3.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_5.html"><button>Next</button></a>
+</body>
+</html>

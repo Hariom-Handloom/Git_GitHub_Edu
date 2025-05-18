@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undoing & Reverting</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📘 Chapter 8: Undoing Changes and Reverting Commits</h2>
+    <hr>
+    <h3>🎯 Objective</h3>
+    <p>
+        By the end of this chapter, you’ll learn how to:
+        <ul>
+            <li>Discard uncommitted changes</li>
+            <li>Undo staged files</li>
+            <li>Revert commits</li>
+            <li>Reset the repository to previous states</li>
+            <li>Understand the difference between <code>revert</code>, <code>reset</code>, and <code>checkout</code></li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🧠 Why Undoing is Important</h3>
+    <p>Mistakes happen — wrong files, buggy features, or broken builds. Git offers <b>powerful tools to undo changes</b>, both before and after you commit them.</p>
+    <hr>
+    <h3>🔄 Scenarios and Solutions</h3>
+    <h4>📝 1. Undo Changes in a Tracked File (Before Commit)</h4>
+    <p>
+        If you modified a file but haven’t committed it yet and want to discard changes:
+        <br><br>
+        <code>git checkout -- filename.txt</code>
+        <br><br>
+        This resets the file to its last committed state.
+    </p>
+    <p style="font-style: italic;">⚠️ Use with caution — this will discard any unsaved work!</p>
+    <br>
+    <h4>📂 2. Unstage a Staged File (Move from Staging Area back to Working Directory)</h4>
+    <p>
+        If you accidentally staged a file (<code>git add</code>) but want to unstage it:
+        <br><br>
+        <code>git reset HEAD filename.txt</code>
+        <br><br>
+        The file will stay changed but is now removed from staging area.
+    </p>
+    <br>
+    <h4>🗑️ 3. Remove All Local Changes in Working Directory</h4>
+    <p>
+        To discard all uncommitted changes in all files:
+        <br><br>
+        <code>git checkout -- .</code>
+        <br><br>
+        To remove all uncommitted tracked and <b>untracked files</b>:
+        <br><br>
+        <code>git clean -fd</code>
+    </p>
+    <p style="font-style: italic;">💡 <code>-f</code> is force, <code>-d</code> means directories too.</p>
+    <br>
+    <h4>🧽 4. Undo the Last Commit (But Keep Changes Locally)</h4>
+    <p>
+        You made a commit, but want to undo it while keeping the changes:
+        <br><br>
+        <code>git reset --soft HEAD~1</code>
+        <ul>
+            <li>Removes the last commit</li>
+            <li>Keeps changes in staging area</li>
+        </ul>
+    </p>
+    <br>
+    <h4>🧹 5. Undo the Last Commit and Unstage Files</h4>
+    <p>
+        <code>git reset --mixed HEAD~1</code>
+        <ul>
+            <li>Removes the last commit</li>
+            <li>Keeps changes in working directory, but unstaged</li>
+        </ul>
+    </p>
+    <br>
+    <h4>🚫 6. Completely Undo Last Commit (Delete It + Changes)</h4>
+    <p style="font-style: italic;">⚠️ Dangerous! Use only if you’re 100% sure!</p>
+    <p>
+        <code>git reset --hard HEAD~1</code>
+        <ul>
+            <li>Deletes the last commit and all related changes</li>
+        </ul>
+    </p>
+    <br>
+    <h4>🔁 7. Revert a Commit (Create a "Negative" Commit)</h4>
+    <p>
+        If a bad commit was already pushed/shared, <b>never delete it</b>. Instead, use:
+        <br><br>
+        <code>git revert commit_hash</code>
+        <ul>
+            <li>This creates a new commit that undoes the changes</li>
+            <li>It’s a <b>safe</b> and <b>collaborative-friendly</b> method</li>
+        </ul>
+    </p>
+    <br>
+    <h4>📜 8. View Commit History for Undo Reference</h4>
+    <p>
+        Use <code>git log</code> or <code>git log --oneline</code> to find the commit hash you want to undo or revert.
+    </p>
+    <hr>
+    <h3>🧠 <code>reset</code> vs <code>revert</code> vs <code>checkout</code></h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Purpose</th>
+            <th>Safe for Shared Repos?</th>
+        </tr>
+        <tr>
+            <td><code>reset</code></td>
+            <td>Moves HEAD to an older commit</td>
+            <td>❌ No</td>
+        </tr>
+        <tr>
+            <td><code>revert</code></td>
+            <td>Creates a new commit to undo another</td>
+            <td>✅ Yes</td>
+        </tr>
+        <tr>
+            <td><code>checkout</code></td>
+            <td>Replaces files with previous version</td>
+            <td>✅ Yes (local files only)</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🧪 Practice Scenarios</h3>
+    <ol>
+        <b>
+            <li>"Modify a file and stage it → then unstage it"</li>
+            <li>"Make a commit and then revert it"</li>
+            <li>"Make multiple commits → use soft, mixed, and hard reset on them"</li>
+        </b>
+    </ol>
+    <hr>
+    <h3>📌 Quick Commands Summary</h3>
+    <table>
+        <tr>
+            <th>Action</th>
+            <th>Command</th>
+        </tr>
+        <tr>
+            <td>Discard file change</td>
+            <td><code>git checkout -- file.txt</code></td>
+        </tr>
+        <tr>
+            <td>Unstage file</td>
+            <td><code>git reset HEAD file.txt</code></td>
+        </tr>
+        <tr>
+            <td>Remove all changes</td>
+            <td><code>git checkout -- .</code></td>
+        </tr>
+        <tr>
+            <td>Undo last commit, keep changes staged</td>
+            <td><code>git reset --soft HEAD~1</code></td>
+        </tr>
+        <tr>
+            <td>Undo last commit, unstage files</td>
+            <td><code>git reset --mixed HEAD~1</code></td>
+        </tr>
+        <tr>
+            <td>Delete last commit and all changes</td>
+            <td><code>git reset --hard HEAD~1</code></td>
+        </tr>
+        <tr>
+            <td>Undo commit with a new commit</td>
+            <td><code>git revert commit_hash</code></td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🧠 Best Practices</h3>
+    <ul>
+        <li>Use <code>reset</code> only for local, private branches.</li>
+        <li>Use <code>revert</code> if you’ve already pushed the changes.</li>
+        <li>Always <code>git log</code> first before undoing anything.</li>
+        <li>When in doubt, <b>back up your repo</b> before using destructive commands.</li>
+    </ul>
+    <hr>
+    <h3>🧭 Conclusion</h3>
+    <p>
+        Knowing how to <b>undo mistakes</b> makes you more confident and productive in Git. You now know how to revert, reset, and clean up your repository.
+    </p>
+    <hr>
+    <h3 style="font-style: italic;">🎯 Up Next: Chapter 9 – Working with Remote Repositories</h3>
+    <hr>
+    <a href="chapter_7.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_9.html"><button>Next</button></a>
+</body>
+</html>

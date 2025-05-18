@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Setup</title>
+    <style>
+        table,td,th{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📘 Chapter 3: Installing Git and First-Time Setup</h2>
+    <hr>
+    <h3>🚀 Why Install Git?</h3>
+    <p>To use Git on your system and start version-controlling your projects, you need to:
+        <ol>
+            <li>Download Git</li>
+            <li>Install it</li>
+            <li>Configure your identity (name and email)</li>
+        </ol>
+        Once installed, you can use Git through your system’s <b>command-line interface (CLI)</b> or <b>Git GUI tools</b> (optional).
+    </p>
+    <hr>
+    <h3>💻 Step 1: Download Git</h3>
+    <p>
+        Visit the official Git website:
+        👉 <a href="https://git-scm.com">https://git-scm.com</a>
+    </p>
+    <p>
+        You'll see a download button that automatically suggests the right version for your operating system (Windows, macOS, or Linux).You'll see a download button that automatically suggests the right version for your operating system (Windows, macOS, or Linux).
+    </p>
+    <p>✅ Download Links:
+        <table>
+            <tr>
+                <th>Operating System</th>
+                <th>Link</th>
+            </tr>
+            <tr>
+                <td>Windows</td>
+                <td><a href="https://git-scm.com/download/win">Download Git for Windows</a></td>
+            </tr>
+            <tr>
+                <td>macOS</td>
+                <td><a href="https://git-scm.com/downloads/mac">Download Git for macOS</a></td>
+            </tr>
+            <tr>
+                <td>Linux</td>
+                <td><a href="https://git-scm.com/download/linux">Download Git for Linux</a></td>
+            </tr>
+        </table>
+    </p>
+    <hr>
+    <h3>🛠️ Step 2: Install Git</h3>
+    <p>🔵 Windows
+    <ol>
+        <li>Run the <b>.exe</b> file you downloaded.</li>
+        <li>In the setup wizard, leave all default options selected unless you know what you're doing.</li>
+        <li>Important options to keep:
+            <ul type="disc">
+                <b>
+                    <li>Use Git from the command line</li>
+                    <li>Checkout Windows-style, commit Unix-style line endings</li>
+                    <li>Use MinTTY terminal</li>
+                </b>
+            </ul>
+        </li>
+        <li>Click "Install".</li>
+    </ol>
+    </p>
+    <p style="font-style: italic;">After installation, right-click on your desktop or inside any folder and select "Git Bash Here" to open the terminal.</p>
+    <p>🍏 macOS
+        <ul>
+            <li>Use <b>Homebrew</b> (recommended): <br>
+            <code>brew install git</code>
+            </li>
+            <li>Or use the installer .dmg from the Git website.</li>
+        </ul>
+    </p>
+    <p style="font-style: italic;">After installation, open Terminal and type <code>git --version</code> to confirm.</p>
+    <p>🐧 Linux <br><br>
+        Use the package manager based on your distribution:
+        <ul>
+            
+            <li>Debian/Ubuntu:
+                <br>
+                <code>sudo apt update</code>
+                <br>
+                <code>sudo apt install git</code>
+            </li>
+            <li>Fedora:
+                <br>
+                <code>sudo dnf install git</code>
+            </li>
+            <li>Arch Linux:
+                <br>
+                <code>sudo pacman -S git</code>
+            </li>
+        </ul>
+    </p>
+    <hr>
+    <h3>✅ Step 3: Verify Installation</h3>
+    <p>After installation, open your terminal (Git Bash, Command Prompt, or Terminal) and type:
+        <br>
+        <code>git --version</code>
+        <br>
+        You should see something like:
+        <br>
+        <code>git version 2.43.0</code>
+        <br>
+        If yes, Git is successfully installed!
+    </p>
+    <hr>
+    <h3>🧑 Step 4: Configure Git (First-Time Setup)</h3>
+    <p>To personalize your commits, Git needs your name and email. Run the following commands:
+        <br><br>
+        <code>git config --global user.name "Your Name"</code>
+        <br>
+        <code>git config --global user.email "youremail@example.com"</code>
+        <br><br>
+        Replace the values with your actual name and email. These details will be attached to every commit you make.
+        <br>
+        You can check if it’s set correctly by running:
+        <br><br>
+        <code>git config --global --list</code>
+        <br><br>
+        It will show:
+        <br><br>
+        <code>user.name=Your Name</code>
+        <br>
+        <code>user.email=youremail@example.com</code>
+        <br>
+    </p>
+    <hr>
+    <h3>⚙️ Optional: Configure Other Git Settings</h3>
+    <table>
+        <tr>
+            <th>Setting</th>
+            <th>Command</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td>Set default editor</td>
+            <td><code>git config --global core.editor nano</code></td>
+            <td>Change commit message editor (default is Vim)</td>
+        </tr>
+        <tr>
+            <td>Enable color output</td>
+            <td><code>git config --global color.ui auto</code></td>
+            <td>Makes Git output easier to read</td>
+        </tr>
+        <tr>
+            <td>Default branch name</td>
+            <td><code>git config --global init.defaultBranch main</code></td>
+            <td>Sets the default branch name to <code>main</code> (recommended)</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🔍 Where Git Stores Config</h3>
+    <p>
+        Git has three levels of configuration:
+        <table>
+            <tr>
+                <th>Level</th>
+                <th>Command</th>
+                <th>Applies To</th>
+            </tr>
+            <tr>
+                <td>System</td>
+                <td><code>--system</code></td>
+                <td>All users on the machine</td>
+            </tr>
+            <tr>
+                <td>Global</td>
+                <td><code>--global</code></td>
+                <td>Current user</td>
+            </tr>
+            <tr>
+                <td>Local</td>
+                <td><code>(default)</code></td>
+                <td>Current project only (stored in <code>.git/config</code>)</td>
+            </tr>
+        </table>
+        <br>
+        Most of the time, you’ll use <code>--global</code> or no flag (local).
+    </p>
+    <hr>
+    <h3>❓ FAQ</h3>
+    <div>
+    <p><b>Q: Can I change my name/email later?</b><br>A: Yes, just run the config commands again with new values.</p>
+    <p><b>Q: What happens if I skip the setup?</b><br>A: Your commits might be anonymous or rejected by platforms like GitHub.</p>        
+    </div>
+    <hr>
+    <h3>🔚 Conclusion</h3>
+    <p>You’ve successfully installed Git and configured your identity. You're now ready to create your first Git repository and start tracking changes like a pro.</p>
+    <hr>
+    <h3 style="font-style: italic;">🎯 Up Next: Chapter 4 – Creating Your First Git Repository</h3>
+    <hr>
+    <a href="chapter_2.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_4.html"><button>Next</button></a>
+</body>
+</html>

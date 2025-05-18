@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Control</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 5px ;
+        }
+    </style>
+</head>
+<body>
+    <h2>🧠 Chapter 1: What is Version Control?</h2>
+    <hr>
+    <h3>📝 Introduction</h3>
+    <p>Have you ever saved a file multiple times with names like:</p>
+    <ul type="circle">
+        <li>assignment_final.docx</li>
+        <li>assignment_final_revised.docx</li>
+        <li>assignment_final_revised2.docx</li>
+    </ul>
+    <p>This is an example of manual version control — where you try to manage versions of a file by creating multiple copies with different names. It’s inefficient, confusing, and prone to mistakes.</p>
+    <p>Now imagine working with a team of people all editing the same files — it becomes chaotic. That’s where <b>Version Control Systems (VCS)</b> come in. They <b>automate</b> and <b>organize</b> the way changes to files are tracked.</p>
+    <hr>
+    <h3>🔍 What is Version Control?</h3>
+    <p style="font-style: italic;">Version Control is a system that records changes to a file or set of files over time so that you can recall specific versions later.</p>
+    <p>It allows you to:
+        <ul type="circle">
+            <li>Keep track of changes</li>
+            <li>Revert back to previous versions</li>
+            <li>See who made what changes and when</li>
+            <li>Work on the same files with others simultaneously</li>
+        </ul>
+        Think of version control as a <b>"timeline" of your project</b>. You can move forward, go back, or even split the timeline into alternate directions (branches).
+    </p>
+    <hr>
+    <h3>💡 Why is Version Control Important?</h3>
+    <p>Whether you're a solo developer or working in a large team, version control offers huge benefits:
+       <dl>
+        <dt>✅ 1. Track Changes:</dt>
+        <dd>Every time you make a change, it’s recorded. You know exactly when and what was changed.</dd>
+        <dt>✅ 2. Revert Mistakes:</dt>
+        <dd>If something goes wrong, you can easily return to a working version from the past.</dd>
+        <dt>✅ 3. Work as a Team:</dt>
+        <dd>Multiple people can work on the same project at the same time without overwriting each other’s work.</dd>
+        <dt>✅ 4. Experiment Safely:</dt>
+        <dd>You can try new features or fixes in separate branches, and merge them into the main project only when they work.</dd>
+        <dt>✅ 5. Keep a History:</dt>
+        <dd>A full log is maintained, so you can audit who did what and why, with messages attached to every change.</dd>
+    </dl> 
+    </p>
+    <hr>
+    <h3>🛠️ Manual Versioning vs. Version Control Systems</h3>
+    <table>
+        <tr>
+            <th>Aspect</th>
+            <th>Manual File Versioning</th>
+            <th>Version Control System</th>
+        </tr>
+        <tr>
+            <td>Saving</td>
+            <td>Rename files manually</td>
+            <td>Automatically saves changes</td>
+        </tr>
+        <tr>
+            <td>Tracking</td>
+            <td>Hard to track changes</td>
+            <td>Detailed logs of each change</td>
+        </tr>
+        <tr>
+            <td>Reverting</td>
+            <td>Must copy from old files</td>
+            <td>One command to go back</td>
+        </tr>
+        <tr>
+            <td>Collaboration</td>
+            <td>Files can overwrite</td>
+            <td>Merges team work safely</td>
+        </tr>
+        <tr>
+            <td>Efficiency</td>
+            <td>Time-consuming</td>
+            <td>Fast and optimized</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🧰 Types of Version Control Systems</h3>
+    <p>
+        Version control systems come in different forms:
+        <ol>
+            <li>Local Version Control</li>
+            <ul>
+                <li>Only tracks changes on your computer.</li>
+                <li>No collaboration or sharing.</li>
+                <li>Example: RCS (Revision Control System)</li>
+            </ul>
+            <li> Centralized Version Control (CVCS)</li>
+            <ul>
+                <li>There’s one central server.</li>
+                <li>All users connect to that server to get the latest changes or share their own.</li>
+                <li>Easy to manage but fails if the server crashes.</li>
+                <li>Examples: CVS, SVN (Subversion)</li>
+            </ul>
+            <li>Distributed Version Control (DVCS)</li>
+            <ul>
+                <li>Every user has a full copy of the project, including the entire history.</li>
+                <li>No internet needed to make commits or view history.</li>
+                <li>More powerful and resilient.</li>
+                <li>Example: Git</li>
+            </ul>
+        </ol>
+    </p>
+    <p style="font-style: italic;">Git is the most popular distributed version control system in the world.</p>
+    <hr>
+    <h3>🌍 Real-Life Analogy</h3>
+    <p>
+        Imagine writing a group report in Google Docs:
+        <ul>
+            <li>Everyone can write at the same time.</li>
+            <li>You can see the revision history.</li>
+            <li>You can restore old versions.</li>
+            <li>Everyone’s work is synced in one place.</li>
+        </ul>
+        Now imagine having the same power for code and files — that's what version control offers!
+    </p>
+    <hr>
+    <h3>🧪 Example Scenario (Without Version Control):</h3>
+    <ul>
+        <li>You're building a website and mess something up.</li>
+        <li>You didn’t save a backup.</li>
+        <li>You lose hours of work trying to fix it.</li>
+    </ul>
+    <h3>🧪 Example Scenario (With Version Control):</h3>
+    <ul>
+        <li>You make changes and commit them.</li>
+        <li>If something breaks, you run one command and return to a previous version.</li>
+        <li>You can compare versions and identify what went wrong.</li>
+    </ul>
+    <hr>
+    <h3>🧠 Key Terms to Remember</h3>
+    <table>
+        <tr>
+            <th>Term</th>
+            <th>Meaning</th>
+        </tr>
+        <tr>
+            <td>Version</td>
+            <td>A snapshot of a project at a given time</td>
+        </tr>
+        <tr>
+            <td>Commit</td>
+            <td>A saved change</td>
+        </tr>
+        <tr>
+            <td>Repository</td>
+            <td>folder/project managed by version control</td>
+        </tr>
+        <tr>
+            <td>Diff</td>
+            <td>The difference between two versions</td>
+        </tr>
+        <tr>
+            <td>Revert</td>
+            <td>Go back to a previous version</td>
+        </tr>
+        <tr>
+            <td>Branch</td>
+            <td>A separate line of development</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🔚 Conclusion</h3>
+    <p>Version control is like having a <b>superpower for managing files</b>. It saves time, prevents data loss, enables teamwork, and builds confidence to experiment without fear.</p>
+    <p>In this module, you will learn how to use the most powerful version control system used in real-world software development: Git.</p>
+    <hr>
+    <h3 style="font-style: italic;">🚀 Up Next: Chapter 2 - What is Git?</h3>
+    <p style="font-style: italic;">You'll learn exactly what Git is, how it works under the hood, and why it's trusted by millions of developers.</p>
+    <hr>
+    <a href="content.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_2.html"><button>Next</button></a>
+</body>
+</html>

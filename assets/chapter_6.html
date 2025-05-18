@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Logs & History</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📘 Chapter 6: Understanding Git Logs and Viewing History</h2>
+    <hr>
+    <h3>🎯 Objective</h3>
+    <p>
+        By the end of this chapter, you'll understand how to:
+        <ul>
+            <li>View the commit history</li>
+            <li>Read and interpret Git logs</li>
+            <li>Identify previous versions</li>
+            <li>Explore changes using various Git history commands</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🧠 Why Learn Git Logs?</h3>
+    <p>
+        Git logs are your <b>project history</b>. Every change, who made it, when, and why — all stored in Git. This is essential for:
+        <ul>
+            <li>Debugging</li>
+            <li>Collaboration</li>
+            <li>Documentation</li>
+            <li>Reverting mistakes</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🔍 Basic Command to View Logs</h3>
+    <p>
+        Use this command:
+        <br><br>
+        <code>git log</code>
+        <br><br>
+        This shows all commits in reverse chronological order (newest first). Each commit includes:
+        <ul>
+            <li><b>Commit hash: </b>Unique ID for each snapshot</li>
+            <li><b>Author: </b>Who made the commit</li>
+            <li><b>Date: </b>When the change was committed</li>
+            <li><b>Message: </b>Description of the change</li>
+        </ul>
+        Example output:
+        <br><br>
+        <code>
+            commit d4f7c3a9b234e0f7cabc1a9e98d2f47bfa34a9b1 <br> Author: Jane Doe &lt;jane@example.com&gt; <br>Date:   Fri May 16 14:30:00 2025 <br><br>Added notes.md with project documentation
+        </code>
+    </p>
+    <hr>
+    <h3>🔢 Show Fewer Commits</h3>
+    <p>
+        To display only the most recent commits, use:
+        <br><br>
+        <code>git log -n 3</code>
+        <br><br>
+        Replace <code>3</code> with any number to limit the list.
+    </p>
+    <hr>
+    <h3>📃 One-line Summary Format</h3>
+    <p>
+        For a more concise overview:
+        <br><br>
+        <code>git log --oneline</code>
+        <br><br>
+        Example output:
+        <br><br>
+        <code>d4f7c3a Add notes.md with documentation <br>c2a8f89 Update hello.txt with second line <br>a3b5d91 Initial commit</code>
+        <br><br>
+        This is useful when you just want to see what was changed, quickly.
+    </p>
+    <hr>
+    <h3>📅 Add Date & Time (Formatted View)</h3>
+    <p>
+        Use:
+        <br><br>
+        <code>git log --pretty=format:"%h - %an, %ar : %s"</code>
+        <br><br>
+        This shows:
+        <ul type="circle">
+            <li>Abbreviated hash</li>
+            <li>Author name</li>
+            <li>How long ago</li>
+            <li>Commit message</li>
+        </ul>
+        Example:
+        <br><br>
+        <code>d4f7c3a - Jane, 2 hours ago : Add notes.md with documentation</code>
+    </p>
+    <hr>
+    <h3>🔁 View Changes with Each Commit</h3>
+    <p>
+        To see what exactly was changed:
+        <br><br>
+        <code>git log -p</code>
+        <br><br>
+        This includes a <b>diff</b> after each commit showing lines added/removed. <br>
+        You can also limit this:
+        <br><br>
+        <code>git log -p -n 1</code>
+    </p>
+    <hr>
+    <h3>📂 View Changes to a Specific File</h3>
+    <p>
+       To see history of just one file:
+       <br><br>
+       <code>git log filename.txt</code>
+       <br><br>
+       Example:
+       <br><br>
+       <code>git log hello.txt</code>
+       <br><br>
+       To see changes made to the file:
+       <br><br>
+       <code>git log -p hello.txt</code> 
+    </p>
+    <hr>
+    <h3>📌 Check Who Made Each Line Change (Blame)</h3>
+    <p>
+        Use the <b>blame</b> command to see who last edited each line of a file:
+        <br><br>
+        <code>git blame filename.txt</code>
+        <br><br>
+        Output format:
+        <br><br>
+        <code>a3b5d91 (Jane Doe 2025-05-16) Hello, Git!</code>
+        <br><br>
+        This is useful when tracking down bugs or understanding code ownership.
+    </p>
+    <hr>
+    <h3>🧠 Best Practices</h3>
+    <p>
+        <ul>
+            <li>Use <code>git log</code> frequently to stay aware of project changes</li>
+            <li>Keep commit messages descriptive so logs are useful</li>
+            <li>Don’t be afraid to explore logs — they’re read-only views!</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🧪 Summary of Commands</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>git log</code></td>
+            <td>Full commit history</td>
+        </tr>
+        <tr>
+            <td><code>git log -n X</code></td>
+            <td>Last X commits</td>
+        </tr>
+        <tr>
+            <td><code>git log --oneline</code></td>
+            <td>One-line summaries</td>
+        </tr>
+        <tr>
+            <td><code>git log -p</code></td>
+            <td>Show changes with each commit</td>
+        </tr>
+        <tr>
+            <td><code>git log filename.txt</code></td>
+            <td>History of a specific file</td>
+        </tr>
+        <tr>
+            <td><code>git blame filename.txt</code></td>
+            <td>See who edited each line</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>❓ FAQ</h3>
+    <p><b>Q: What is a commit hash?</b><br>A: It’s a unique ID Git assigns to each commit. It can be used to refer to specific snapshots.</p>
+    <p><b>Q: Are Git logs editable?</b><br>A: No. Git logs are a permanent record. You can rewrite history, but only with advanced commands.</p>
+    <hr>
+    <h3>🔚 Conclusion</h3>
+    <p>
+        You now know how to explore your project’s history using Git logs. This is critical for team collaboration, debugging, and tracking changes.
+    </p>
+    <hr>
+    <h3 style="font-style: italic;">🎯 Up Next: Chapter 7 – Branches: Creating, Switching, and Merging</h3>
+    <hr>
+    <a href="chapter_5.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_7.html"><button>Next</button></a>
+</body>
+</html>

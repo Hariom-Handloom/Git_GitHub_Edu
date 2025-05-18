@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commits & History</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📘 Chapter 5: Making Changes, Staging, and Committing</h2>
+    <hr>
+    <h3>🎯 Objective</h3>
+    <p>In this chapter, you'll learn:
+        <br>
+        <ul>
+            <li>How to make changes to files</li>
+            <li>How Git detects those changes</li>
+            <li>How to <b>stage and commit</b> updated files</li>
+            <li>Common commands used in this process</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🔁 What is a “Change” in Git?</h3>
+    <p>A <b>change</b> refers to any modification made to a file tracked by Git:
+    <ul>
+        <li>Editing content</li>
+        <li>Adding new files</li>
+        <li>Deleting files</li>
+    </ul>
+    Git keeps track of what’s added, changed, or removed using a <b>three-stage</b> process:
+    <br><br>
+    <table>
+        <tr>
+            <th>Stage</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Working Directory</td>
+            <td>Where you modify files</td>
+        </tr>
+        <tr>
+            <td>Staging Area (Index)</td>
+            <td>Where you prepare changes for a commit</td>
+        </tr>
+        <tr>
+            <td>Repository (HEAD)</td>
+            <td>Where committed history is saved</td>
+        </tr>
+    </table>
+    </p>
+    <hr>
+    <h3>📝 Step 1: Modify a Tracked File</h3>
+    <p>Let’s say you previously created a file called <code>hello.txt</code>. <br>
+    Open and edit it:
+    <br><br>
+    <code>Hello, Git!</code><br>
+    <code>This is my first modification.</code>
+    <br><br>
+    Now ask Git what changed:
+    <br><br>
+    <code>git status</code>
+    <br><br>
+    You’ll see:
+    <br><br>
+    <code>Changes not staged for commit: <br>
+    (use "git add <file>..." to update what will be committed) <br>
+    modified: hello.txt
+    </code>
+    <br><br>
+    This means Git knows the file changed, but it hasn’t been staged yet.    
+    </p>
+    <hr>
+    <h3>➕ Step 2: Stage the Modified File</h3>
+    <p>Staging tells Git you want to include the changes in the next commit.
+    <br><br>
+    <code>git add hello.txt</code>
+    <br><br>
+    Check status again:
+    <br><br>
+    git status
+    <br><br>
+    Output:
+    <br><br>
+    <code>Changes to be committed: <br>
+      modified: hello.txt
+    </code>
+    </p>
+    <hr>
+    <h3>💾 Step 3: Commit the Changes</h3>
+    <p>
+        Once staged, commit them with a meaningful message:
+        <br><br>
+        <code>git commit -m "Updated hello.txt with second line"</code>
+        <br><br>
+        Now the repository has a new snapshot with the updated file.
+    </p>
+    <hr>
+    <h3>📂 Step 4: Add and Commit New Files</h3>
+    <p>
+        Let’s say you create a new file called <code>notes.md</code>:
+        <br><br>
+        <code>echo "Git is awesome!" > notes.md</code>
+        <br><br>
+        Check status:
+        <br><br>
+        <code>git status</code>
+        <br><br>
+        You’ll see:
+        <br><br>
+        <code>Untracked files: <br>  notes.md</code>
+        <br><br>
+        Stage and commit the new file:
+        <br><br>
+        <code>git add notes.md <br> git commit -m "Added notes.md with initial content"</code>
+    </p>
+    <hr>
+    <h3>🗑️ Step 5: Deleting Files</h3>
+    <p>
+        If you delete a file manually (e.g., by deleting it in Explorer or using <code>rm hello.txt</code>), Git notices it:
+        <br><br>
+        <code>git status</code>
+        <br><br>
+        Output:
+        <br><br>
+        <code>deleted: hello.txt</code>
+        <br><br>
+        Stage and commit the deletion:
+        <br><br>
+        <code>git add hello.txt <br> git commit -m "Deleted hello.txt"</code>
+        <br><br>
+        Or do it in one step using Git:
+        <br><br>
+        <code>git rm hello.txt <br> git commit -m "Deleted hello.txt using git rm"</code>
+    </p>
+    <hr>
+    <h3>🔍 Step 6: Viewing the Differences</h3>
+    <p>
+        You can preview what changed before staging:
+        <br><br>
+        <code>git diff</code>
+        <br><br>
+        To see what’s staged:
+        <br><br>
+        <code>git diff --staged</code>
+        <br><br>
+        To view commit history:
+        <br><br>
+        <code>git log</code>
+    </p>
+    <hr>
+    <h3>🧠 Tip: Stage Multiple Files</h3>
+    <p>
+        You can stage all modified and new files at once:
+        <br><br>
+        <code>git add .</code>
+        <br><br>
+        Or selectively stage files:
+        <br><br>
+        <code>git add file1.txt file2.md</code>
+    </p>
+    <hr>
+    <h3>⚠️ Common Mistakes to Avoid</h3>
+    <table>
+        <tr>
+            <th>Mistake</th>
+            <th>Tip</th>
+        </tr>
+        <tr>
+            <td>Forgetting to stage changes</td>
+            <td>Run <code>git status</code> often to check what's staged</td>
+        </tr>
+        <tr>
+            <td>Making poor commit messages</td>
+            <td>Use short, clear messages like “Fix bug in login form”</td>
+        </tr>
+        <tr>
+            <td>Committing too much at once</td>
+            <td>Break work into smaller logical commits</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>✅ Quick Summary</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>git status</code></td>
+            <td>See what changed</td>
+        </tr>
+        <tr>
+            <td><code>git add &lt;file&gt;</code></td>
+            <td>Stage file for commit</td>
+        </tr>
+        <tr>
+            <td><code>git add .</code></td>
+            <td>Stage all new/changed files</td>
+        </tr>
+        <tr>
+            <td><code>git commit -m "message"</code></td>
+            <td>Commit staged changes</td>
+        </tr>
+        <tr>
+            <td><code>git diff</code></td>
+            <td>Show file differences</td>
+        </tr>
+        <tr>
+            <td><code>git log</code></td>
+            <td>View commit history</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🔚 Conclusion</h3>
+    <p>
+        You're now comfortable with:
+        <ul>
+            <li>Editing files</li>
+            <li>Tracking changes</li>
+            <li>Staging and committing updates</li>
+        </ul>
+        These are the core skills of using Git effectively.
+    </p>
+    <hr>
+    <h3 style="font-style: italic;">🎯 Up Next: Chapter 6 – Understanding Git Logs and Viewing History</h3>
+    <hr>
+    <a href="chapter_4.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_6.html"><button>Next</button></a>
+
+</body>
+</html>

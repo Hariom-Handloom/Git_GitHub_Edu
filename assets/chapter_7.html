@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branches</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📘 Chapter 7: Branches — Creating, Switching, and Merging</h2>
+    <hr>
+    <h3>🎯 Objective</h3>
+    <p>
+        By the end of this chapter, you’ll understand:
+        <ul>
+            <li>What a branch is in Git</li>
+            <li>Why branches are useful</li>
+            <li>How to create and switch branches</li>
+            <li>How to merge branches</li>
+            <li>How to handle merge conflicts</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🌿 What is a Branch in Git?</h3>
+    <p>
+        A <b>branch</b> is a separate line of development.
+        <ul>
+            <li>Think of it as a sandbox where you can experiment safely.</li>
+            <li>The main/default branch is usually called <code>main</code> or <code>master</code>.</li>
+            <li>You can create <b>new branches</b> to try features, fix bugs, or work in teams — without affecting the main project.</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🧪 Why Use Branches?</h3>
+    <p>
+        Branches are used for:
+        <ul>
+            <li>Isolating new features</li>
+            <li>Bug fixing</li>
+            <li>Collaborating with others</li>
+            <li>Trying experimental ideas</li>
+        </ul>
+    </p>
+    <p style="font-style: italic;">💡 Every branch is just a lightweight pointer to a commit.</p>
+    <hr>
+    <h3>📌 Check Your Current Branch</h3>
+    <p>
+        <code>git branch</code>
+        <br><br>
+        The current branch will be marked with an asterisk <code>*</code>.
+        <br>
+        Example output:
+        <br><br>
+        <code>* main</code>
+    </p>
+    <hr>
+    <h3>🆕 Create a New Branch</h3>
+    <p>
+        <code>git branch feature-x</code>
+        <br><br>
+        This creates a new branch <code>feature-x</code>, based on your current branch.
+    </p>
+    <p style="font-style: italic;">🚫 This <b>does not</b> switch you to the new branch.</p>
+    <hr>
+    <h3>🔁 Switch to a Branch</h3>
+    <p>
+        <code>git checkout feature-x</code>
+        <br><br>
+        Now you're working in the <code>feature-x</code> branch. <br>
+        You can also create and switch in one step:
+        <br><br>
+        <code>git checkout -b feature-x</code>
+    </p>
+    <hr>
+    <h3>📄 Make Changes in the New Branch</h3>
+    <p>
+        Now edit files, commit changes, and experiment freely. Your main branch (<code>main</code>) remains unchanged.
+        <br><br>
+        <code>git add .</code><br><code>git commit -m "Add new feature on feature-x branch"</code>
+    </p>
+    <hr>
+    <h3>🔀 Merge a Branch into Another</h3>
+    <p>
+        Once your feature is ready, switch to the main branch:
+        <br><br>
+        <code>git checkout main</code>
+        <br><br>
+        Then merge the other branch:
+        <br><br>
+        <code>git merge feature-x</code>
+        <br><br>
+        This applies the changes from <code>feature-x</code> into <code>main</code>.
+    </p>
+    <hr>
+    <h3>✅ Successful Merge Output</h3>
+    <p>
+        If there are no conflicts, Git will show:
+        <br><br>
+        <code>Updating a3b5d91..d4f7c3a</code><br><code>Fast-forward</code><br><code> file.txt | 2 ++</code><br><code>1 file changed, 2 insertions(+)</code>
+    </p>
+    <hr>
+    <h3>⚠️ Merge Conflicts</h3>
+    <p>
+        If both branches edited the same lines, Git will show a <b>merge conflict</b>:
+        <br><br>
+        <code>Auto-merging file.txt</code><br><code>CONFLICT (content): Merge conflict in file.txt</code><br><code>Automatic merge failed; fix conflicts and then commit the result.</code>
+        <br><br>
+        Edit the file manually to resolve:
+        <br><br>
+        <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD <br>This is content from main <br>=======<br>This is content from feature-x <br>&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-x</code>
+        <br><br>
+        Remove the conflict markers (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>) and keep the correct version. <br>
+        Then:
+        <br><br>
+        <code>git add file.txt <br>git commit -m "Resolved merge conflict in file.txt"</code>
+    </p>
+    <hr>
+    <h3>🧹 Delete a Merged Branch (Optional)</h3>
+    <p>
+        After merging, you can delete the feature branch:
+        <br><br>
+        <code>git branch -d feature-x</code>
+        <br><br>
+        This is safe if the branch was merged.
+    </p>
+    <hr>
+    <h3>🚀 Summary of Key Commands</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>git branch</code></td>
+            <td>List all branches</td>
+        </tr>
+        <tr>
+            <td><code>git branch branch-name</code></td>
+            <td>Create a new branch</td>
+        </tr>
+        <tr>
+            <td><code>git checkout branch-name</code></td>
+            <td>Switch to a branch</td>
+        </tr>
+        <tr>
+            <td><code>git checkout -b branch-name</code></td>
+            <td>Create and switch in one step</td>
+        </tr>
+        <tr>
+            <td><code>git merge branch-name</code></td>
+            <td>Merge a branch into current one</td>
+        </tr>
+        <tr>
+            <td><code>git branch -d branch-name</code></td>
+            <td>Delete a branch</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🧠 Best Practices</h3>
+    <ul>
+        <li>Use short, descriptive branch names: <code>bugfix-login</code>, <code>feature-payment</code></li>
+        <li>Commit often in feature branches</li>
+        <li>Merge frequently to avoid large merge conflicts</li>
+        <li>Always test your feature before merging to <code>main</code></li>
+    </ul>
+    <hr>
+    <h3>🧪 Practice Challenge</h3>
+    <ol>
+        <b>
+            <li>"Create a new branch called <code>color-change</code>."</li>
+            <li>"Modify a file and commit the changes."</li>
+            <li>"Merge the branch into <code>main</code>."</li>
+            <li>"Delete the branch after merging."</li>
+        </b>
+    </ol>
+    <hr>
+    <h3>🔚 Conclusion</h3>
+    <p>
+        Branches are a powerful feature in Git. They allow you to work independently, collaborate with others, and keep your main codebase clean.
+    </p>
+    <hr>
+    <h3 style="font-style: italic;">🎯 Up Next: Chapter 8 – Undoing Changes and Reverting Commits</h3>
+    <hr>
+    <a href="chapter_6.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_8.html"><button>Next</button></a>
+</body>
+</html>
