@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More about GitHub</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📘 Chapter 11: Pull Requests, Code Review, and Collaboration on GitHub</h2>
+    <hr>
+    <h3>🎯 Objectives</h3>
+    <p>
+        By the end of this chapter, you will be able to:
+        <ul>
+            <li>Understand what a <b>Pull Request (PR)</b> is and how it fits into GitHub workflows</li>
+            <li>Create and manage Pull Requests</li>
+            <li>Perform and respond to <b>code reviews</b></li>
+            <li>Collaborate effectively using GitHub’s built-in discussion and review tools</li>
+            <li>Follow collaboration best practices used by professional developers and teams</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🧩 Section 1: What is a Pull Request?</h3>
+    <h4>📝 Definition</h4>
+    <p>
+        A <b>Pull Request (PR)</b> is a GitHub feature that allows developers to <b>propose changes</b> from one branch (often from a fork) into another branch (typically the <code>main</code> or <code>develop</code> branch of the original repository). It enables:
+        <ul>
+            <li><b>Code review</b> before merging</li>
+            <li>Discussion and feedback</li>
+            <li><b>Automated</b> testing integration</li>
+            <li>A traceable history of contributions</li>
+        </ul>
+        <p style="font-style: italic;">🔑 Pull Requests are central to collaboration in both open-source and team-based development.</p>
+    </p>
+    <hr>
+    <h3>🔧 Section 2: Creating a Pull Request</h3>
+    <h4>📋 Prerequisites</h4>
+    <p>
+        To create a PR, you should:
+        <ul>
+            <li>Have a fork or a local branch with committed changes</li>
+            <li>Push your changes to a <b>remote branch</b> on GitHub</li>
+        </ul>
+    </p>
+    <h4>🔹 Step-by-Step: Creating a Pull Request</h4>
+    <ol>
+        <li>Push your feature branch: <br><br>
+            <code>git push origin your-branch-name</code>
+        </li>
+        <br>
+        <li>On GitHub, go to your repository.</li>
+        <li>Click <b>"Compare & pull request"</b> (if prompted) <br>OR <br>Go to the <b>Pull Requests</b> tab and click <b>"New pull request"</b></li>
+        <li>Choose:
+            <ul>
+                <li><b>Base branch:</b> the branch you want to merge into (e.g., <code>main</code>)</li>
+                <li><b>Compare branch:</b> the branch with your changes</li>
+            </ul>
+        </li>
+        <li>Add a <b>clear title</b> and <b>detailed description</b>.</li>
+        <li>Click <b>"Create pull request"</b></li>
+    </ol>
+    <p style="font-style: italic;">✅ Tip: Reference Issues in the description using <code>Fixes #issue-number</code>.</p>
+    <hr>
+    <h3>🔍 Section 3: Understanding the PR Workflow</h3>
+    <h4>🗂️ Typical Flow</h4>
+    <code>fork → branch → changes → push → pull request → review → merge</code>
+    <h4>🔄 PR Lifecycle</h4>
+    <table>
+        <tr>
+            <th>Stage</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Open PR</td>
+            <td>You submit your code changes for review</td>
+        </tr>
+        <tr>
+            <td>Review</td>
+            <td>Others comment, suggest changes, or approve</td>
+        </tr>
+        <tr>
+            <td>Update</td>
+            <td>You push additional commits to the same PR</td>
+        </tr>
+        <tr>
+            <td>Approval</td>
+            <td>Reviewers approve the PR</td>
+        </tr>
+        <tr>
+            <td>Merge</td>
+            <td>Maintainer (or you) merges the PR</td>
+        </tr>
+        <tr>
+            <td>Close (optional)</td>
+            <td>PR can be closed without merging if needed</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>👀 Section 4: Code Review in Pull Requests</h3>
+    <h4>👤 What is Code Review?</h4>
+    <p>
+        A <b>code review</b> is the process of evaluating code changes before merging. It ensures:
+        <ul>
+            <li>Code quality and consistency</li>
+            <li>No bugs or security issues</li>
+            <li>Adherence to project style and architecture</li>
+        </ul>
+    </p>
+    <h4>👨‍🏫 Roles in Code Review</h4>
+    <table>
+        <tr>
+            <th>Role</th>
+            <th>Responsibilities</th>
+        </tr>
+        <tr>
+            <td>Author</td>
+            <td>Submits PR and responds to feedback</td>
+        </tr>
+        <tr>
+            <td>Reviewer(s)</td>
+            <td>Examines code, leaves comments, suggests changes</td>
+        </tr>
+        <tr>
+            <td>Maintainer</td>
+            <td>Approves and merges the PR</td>
+        </tr>
+    </table>
+    <h4>🛠️ GitHub Review Features</h4>
+    <ul>
+        <li><b>Inline comments</b> on specific lines of code</li>
+        <li><b>General comments</b> for overall discussion</li>
+        <li><b>Approve</b>, <b>Request Changes</b>, or <b>Comment</b></li>
+        <li><b>Suggested changes</b> that authors can accept with one click</li>
+    </ul>
+    <hr>
+    <h3>🔁 Section 5: Updating a Pull Request</h3>
+    <p>
+        If the reviewer requests changes:
+        <ol>
+            <li>Make local edits</li>
+            <li>Commit your changes:
+                <br>
+                <code>git commit -am "Refactor auth logic based on feedback"</code>
+            </li>
+            <li>Push them to the same branch:
+                <br>
+                <code>git push origin your-branch-name</code>
+            </li>
+        </ol>
+        The PR will <b>automatically update</b>, and the reviewer will be notified.
+    </p>
+    <hr>
+    <h3>✅ Section 6: Merging Pull Requests</h3>
+    <p>
+        After approval:
+        <ul>
+            <li>Click <b>“Merge pull request”</b></li>
+            <li>Choose merge strategy:
+                <ul>
+                    <li><b>Create a merge commit</b> (default, keeps full history)</li>
+                    <li><b>Squash and merge</b> (combines all commits into one)</li>
+                    <li><b>Rebase and merge</b> (adds commits linearly)</li>
+                </ul>
+            </li>
+        </ul>
+        Once merged:
+        <ul>
+            <li>Delete the feature branch if it's no longer needed (optional but recommended)</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🤝 Section 7: Best Practices for Pull Requests and Collaboration</h3>
+    <table>
+        <tr>
+            <th>Best Practice</th>
+            <th>Why It Matters</th>
+        </tr>
+        <tr>
+            <td>Keep PRs Small</td>
+            <td>Easier to review and test</td>
+        </tr>
+        <tr>
+            <td>Write Good Descriptions</td>
+            <td>Helps reviewers understand the context</td>
+        </tr>
+        <tr>
+            <td>Link Related Issues</td>
+            <td>Makes tracking easier and automates issue closing</td>
+        </tr>
+        <tr>
+            <td>Use Branches Per Feature</td>
+            <td>Keeps code organized and isolated</td>
+        </tr>
+        <tr>
+            <td>Test Your Code</td>
+            <td>Reduces bugs and reviewer workload</td>
+        </tr>
+        <tr>
+            <td>Be Respectful</td>
+            <td>Collaboration works best with positive communication</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🧠 Section 8: Summary of Key Concepts</h3>
+    <ul>
+        <li>Pull Requests allow you to <b>propose</b>, <b>discuss</b>, and <b>review changes</b></li>
+        <li>GitHub’s tools enable <b>inline commenting</b>, <b>approval</b>, and <b>change requests</b></li>
+        <li>Reviewers play a key role in <b>maintaining code quality</b>.</li>
+        <li>PRs can be <b>updated dynamically</b> by pushing new commits</li>
+        <li>Following <b>best practices</b> improves collaboration and speeds up development</li>
+    </ul>
+    <hr>
+    <h3>📝 Practice Tasks</h3>
+    <ol>
+        <li>Fork or clone a GitHub repository</li>
+        <li>Create a new branch and make a small change (e.g., fix a typo or update README)</li>
+        <li>Push your branch and open a Pull Request</li>
+        <li>Request a code review from a friend or mentor</li>
+        <li>Respond to feedback and update the PR</li>
+        <li>Merge the PR when approved</li>
+    </ol>
+    <hr>
+    <h3>📌 Common Terms</h3>
+    <table>
+        <tr>
+            <th>Term</th>
+            <th>Definition</th>
+        </tr>
+        <tr>
+            <td>Pull Request</td>
+            <td>Proposal to merge one branch’s changes into another</td>
+        </tr>
+        <tr>
+            <td>Code Review</td>
+            <td>Evaluation of code changes by another developer before merging</td>
+        </tr>
+        <tr>
+            <td>Approve/Request Changes</td>
+            <td>Reviewer decisions during a PR</td>
+        </tr>
+        <tr>
+            <td>Merge Strategy</td>
+            <td>How commits are combined into the target branch</td>
+        </tr>
+        <tr>
+            <td>Inline Comments</td>
+            <td>Feedback given on specific lines of code in a PR</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🔚 Conclusion</h3>
+    <p>
+        Pull Requests are the heart of collaborative software development. They allow you to share your code, get feedback, and work together with others to improve projects in a transparent, structured way.
+    </p>
+    <hr>
+    <h3 style="font-style: italic;">🎯 Next Up: Chapter 12 – Working with Forks and Open-Source Contributions</h3>
+    <hr>
+    <a href="chapter_10.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_12.html"><button>Next</button></a>
+</body>
+</html>

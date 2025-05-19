@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forks & Open-Source</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📘 Chapter 12: Working with Forks and Open-Source Contributions</h2>
+    <hr>
+    <h3>🎯 Objectives</h3>
+    <p>
+        By the end of this chapter, you will be able to:
+        <ul>
+            <li>Understand what it means to <b>fork a repository</b></li>
+            <li>Use <b>Git and GitHub</b> to contribute to open-source projects</li>
+            <li>Keep your fork in sync with the original ("upstream") project</li>
+            <li>Follow proper contribution workflow used in open-source communities</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🧩 Section 1: What Is Forking in GitHub?</h3>
+    <h4>🔄 Definition of Forking</h4>
+    <p>
+        A <b>fork</b> is a personal copy of someone else's GitHub repository. It allows you to:
+        <ul>
+            <li>Make changes without affecting the original project</li>
+            <li>Propose improvements through <b>Pull Requests</b></li>
+            <li>Contribute to open-source or collaborative projects</li>
+        </ul>
+    </p>
+    <h4>🧠 Why Fork Instead of Clone?</h4>
+    <table>
+        <tr>
+            <th>Clone</th>
+            <th>Fork</th>
+        </tr>
+        <tr>
+            <td>Makes a copy <b>locally</b></td>
+            <td>Creates a copy <b>on GitHub</b></td>
+        </tr>
+        <tr>
+            <td>You can’t push to the original</td>
+            <td>You can push to your own fork</td>
+        </tr>
+        <tr>
+            <td>No collaboration without access</td>
+            <td>Enables collaboration through PRs</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🔧 Section 2: How to Fork and Clone a Repository</h3>
+    <h4>📌 Step-by-Step: Forking a Repository</h4>
+    <ol>
+        <li>Go to a public GitHub repo (e.g., <a href="https://github.com/torvalds/linux">https://github.com/torvalds/linux</a>) </li>
+        <li>Click the <b>"Fork"</b> button (top right)</li>
+        <li>GitHub creates a copy under your account: <code>https://github.com/your-username/linux</code></li>
+    </ol>
+    <h4>🔄 Cloning Your Fork Locally</h4>
+    <p>
+        Once forked, clone it to your local machine:
+        <br><br>
+        <code>
+            git clone https://github.com/your-username/linux.git <br>
+            cd linux
+        </code>
+    </p>
+    <hr>
+    <h3>🛠️ Section 3: Making and Submitting Changes</h3>
+    <h4>📂 Create a Branch for Your Work</h4>
+    <p>
+        <code>git checkout -b add-readme-section</code>
+        <p style="font-style: italic;">📌 Always use feature-specific branches. Don’t work directly on <code>main</code>.</p>
+    </p>
+    <h4>✍️ Make Your Changes</h4>
+    <p>
+        Edit files using a code editor. Then:
+        <br><br>
+        <code>
+            git add . <br>
+            git commit -m "Added 'Installation' section to README" <br>
+            git push origin add-readme-section
+        </code>
+    </p>
+    <h4>📬 Open a Pull Request to Contribute</h4>
+    <ol>
+        <li>Go to your <b>fork</b> on GitHub</li>
+        <li>Click <b>"Compare & pull request"</b></li>
+        <li>Add a title and description</li>
+        <li>Submit your PR to the original repository (<code>upstream</code>)</li>
+    </ol>
+    <hr>
+    <h3>🌐 Section 4: Keeping Your Fork in Sync</h3>
+    <p>
+        When the original project changes, your fork can become out of date. Use the following to stay current.
+        
+    </p>
+    <h4>Step 1: Add the Upstream Repo</h4>
+    <p><code>git remote add upstream https://github.com/original-user/original-repo.git</code></p>
+    <h4>Step 2: Fetch Changes from Upstream</h4>
+    <p><code>git fetch upstream</code></p>
+    <h4>Step 3: Merge Updates into Your Local Main Branch</h4>
+    <p>
+        <code>
+            git checkout main <br>
+            git merge upstream/main
+        </code>
+    </p>
+    <h4>Step 4: Push the Updated Main to Your Fork</h4>
+    <p><code>git push origin main</code></p>
+    <p style="font-style: italic;">✅ This syncs your fork with the latest changes from the original repo.</p>
+    <hr>
+    <h3>🤝 Section 5: Best Practices for Open-Source Contributions</h3>
+    <p>
+        Contributing to open-source is more than just writing code — it's about collaborating professionally, communicating clearly, and respecting community standards. Here are key practices every contributor should follow:
+    </p>
+    <h4>✅ 1. Read the Contribution Guidelines</h4>
+    <p>
+        Most well-maintained open-source projects include a <code>CONTRIBUTING.md</code> file. It explains:
+        <ul>
+            <li>How to report bugs</li>
+            <li>How to suggest features</li>
+            <li>How to submit Pull Requests</li>
+            <li>Code style or formatting rules</li>
+        </ul>
+        <b>📌 Always read and follow this file before contributing.</b>
+    </p>
+    <br>
+    <h4>📝 2. Create Clear, Descriptive Issues and PRs</h4>
+    <p>
+        When opening an <b>Issue</b> or <b>Pull Request</b>:
+        <ul>
+            <li>Use a meaningful title ("<code>Fix typo in README</code>" instead of "<code>Fixed it</code>")</li>
+            <li>Describe what you changed and why</li>
+            <li>Mention related issues using <code>#issue-number</code> if applicable</li>
+        </ul>
+    </p>
+    <br>
+    <h4>🌿 3. Work on Feature Branches, Not Main</h4>
+    <p>
+        Never work directly on the <code>main</code> branch. Use:
+        <br><br>
+        <code>git checkout -b feature/short-description</code>
+        <br><br>
+        This makes it easier to manage multiple changes and reduce merge conflicts.
+    </p>
+    <br>
+    <h4>🔄 4. Sync Frequently with Upstream</h4>
+    <p>
+        Regularly pull changes from the original repository to avoid falling behind:
+        <br><br>
+        <code>
+            git fetch upstream <br>
+            git merge upstream/main
+        </code>
+        <br><br>
+        Doing this reduces chances of conflict when submitting a PR.
+    </p>
+    <br>
+    <h4>💬 5. Communicate and Be Respectful</h4>
+    <ul>
+        <li>Respond to feedback professionally</li>
+        <li>Be open to changes or revisions</li>
+        <li>Remember that maintainers are often volunteers</li>
+    </ul>
+    <p>Open-source is collaborative — positive communication is key.</p>
+    <br>
+    <h4>🧪 6. Test Your Changes Before Submitting</h4>
+    <p>
+        If the project has a test suite:
+        <ul>
+            <li>Run all tests before submitting a PR</li>
+            <li>Make sure your change doesn’t break existing functionality</li>
+        </ul>
+        Use tools like:
+        <br><br>
+        <code>
+            npm test <br>
+            pytest <br>
+            make test
+        </code>
+        <br><br>
+        (Depending on the project’s tech stack)
+    </p>
+    <hr>
+    <h3>🧠 Section 6: Key Terms Recap</h3>
+    <table>
+        <tr>
+            <th>Term</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Fork</td>
+            <td>A personal GitHub copy of another repository</td>
+        </tr>
+        <tr>
+            <td>Clone</td>
+            <td>Local copy of any GitHub repository</td>
+        </tr>
+        <tr>
+            <td>Upstream</td>
+            <td>The original repository from which you forked</td>
+        </tr>
+        <tr>
+            <td>Branch</td>
+            <td>An isolated line of development</td>
+        </tr>
+        <tr>
+            <td>Pull Request</td>
+            <td>A request to merge your branch into another (typically upstream)</td>
+        </tr>
+        <tr>
+            <td>Remote</td>
+            <td>A reference to a GitHub-hosted repo (origin = your fork, upstream = original)</td>
+        </tr>
+        <tr>
+            <td>Syncing</td>
+            <td>Updating your fork with the latest changes from upstream</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🧪 Section 7: Practice Tasks</h3>
+    <p>
+        Try doing the following to solidify your knowledge:
+        <ol>
+            <li><b>Fork</b> a popular open-source repository (e.g., a documentation repo)</li>
+            <li><b>Clone</b> it locally and create a new branch</li>
+            <li>Make a small edit, like fixing a typo or improving formatting</li>
+            <li><b>Push</b> your branch and open a Pull Request</li>
+            <li><b>Add the upstream</b> remote and sync with upstream main branch</li>
+            <li>Fetch and merge upstream changes into your local copy</li>
+        </ol>
+    </p>
+    <hr>
+    <h3>🔚 Conclusion</h3>
+    <p>
+        Forking is a core part of the open-source workflow on GitHub. It allows you to work independently, contribute back via Pull Requests, and learn industry-grade collaboration practices. By mastering forks, syncing, and open-source etiquette, you're equipped to contribute meaningfully to any project.
+    </p>
+    <hr>
+    <h3 style="font-style: italic;">🎯 Next Up: Chapter 13 – Git Branching Strategies (Main, Dev, Feature, Hotfix, etc.)</h3>
+    <hr>
+    <a href="chapter_11.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_13.html"><button>Next</button></a>
+</body>
+</html>
