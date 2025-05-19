@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Repo</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📘 Chapter 9: Working with Remote Repositories</h2>
+    <hr>
+    <h3>🎯 Objective</h3>
+    <p>
+        By the end of this chapter, learners will:
+        <ul>
+            <li>Understand what a remote repository is</li>
+            <li>Learn to add a remote (e.g., GitHub)</li>
+            <li>Push and pull code</li>
+            <li>Clone repositories</li>
+            <li>Work with multiple remotes</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🌍 What is a Remote Repository?</h3>
+    <p>
+        A <b>remote repository</b> is a version of your project that is hosted on the internet or a network.
+        <ul>
+            <li>Platforms like <b>GitHub</b>, <b>GitLab</b>, or <b>Bitbucket</b> host these remotes.</li>
+            <li>They allow you to <b>collaborate with others</b>, <b>share code</b>, and <b>safely back up your work</b>.</li>
+            <li>Common remote name: <code>origin</code></li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🔗 Connecting to a Remote</h3>
+    <p>
+        To connect a local Git project to a remote repository (e.g., a GitHub repo):
+        <br><br>
+        <code>git remote add origin https://github.com/username/repo-name.git</code>
+        <br>
+        <p style="font-style: italic ;"><code>origin</code> is the alias name for the remote URL.</p>
+        <br>
+        You can verify:
+        <br><br>
+        <code>git remote -v</code>
+    </p>
+    <hr>
+    <h3>🧲 Cloning a Remote Repository</h3>
+    <p>
+        To copy a remote repository to your local machine:
+        <br><br>
+        <code>git clone https://github.com/username/repo-name.git</code>
+        <br><br>
+        This:
+        <ul>
+            <li>Downloads the code</li>
+            <li>Creates a local folder</li>
+            <li>Sets up <code>origin</code> remote by default</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>📤 Pushing Changes to Remote</h3>
+    <p>
+        Once your code is committed locally, use:
+        <br><br>
+        <code>git push origin branch-name</code>
+        <br>
+        <p style="font-style: italic;">Example: Push main branch</p>
+        <code>git push origin main</code>
+        <br><br>
+        If it's your <b>first push</b>, you may need to set the upstream:
+        <br><br>
+        <code>git push -u origin main</code>
+        <br><br>
+        This links your local branch with the remote.
+    </p>
+    <hr>
+    <h3>📥 Pulling Changes from Remote</h3>
+    <p>
+        To <b>download changes</b> from the remote repository:
+        <br><br>
+        <code>git pull origin main</code>
+        <br><br>
+        This:
+        <ul>
+            <li>Fetches latest changes</li>
+            <li>Merges them into your local branch</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🔄 Fetch vs Pull</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>git fetch</code></td>
+            <td>Gets updates from remote but doesn’t merge</td>
+        </tr>
+        <tr>
+            <td><code>git pull</code></td>
+            <td>Fetches + merges automatically</td>
+        </tr>
+    </table>
+    <p>Use <code>git fetch</code> if you want to review changes before merging.</p>
+    <hr>
+    <h3>🚨 Common Push Error: Rejected Push</h3>
+    <p>
+        <code>! [rejected] &nbsp;&nbsp; &nbsp; &nbsp;     main -> main (non-fast-forward)</code>
+        <br><br>
+        This means someone else pushed to the remote before you.
+        <br><br>
+        <b>Solution:</b>
+        <br><br>
+        <code>git pull origin main --rebase</code>
+        <br><br>
+        Then push again:
+        <br><br>
+        <code>git push origin main</code>
+    </p>
+    <hr>
+    <h3>🛠️ Changing or Removing Remotes</h3>
+    <p>
+        <b>View remotes:</b>
+        <br><br>
+        <code>git remote -v</code>
+        <br><br>
+        <b>Change remote URL:</b>
+        <br><br>
+        <code>git remote set-url origin NEW_URL</code>
+        <br><br>
+        <b>Remove a remote:</b>
+        <br><br>
+        <code>git remote remove origin</code>
+    </p>
+    <hr>
+    <h3>🌐 Working with Multiple Remotes</h3>
+    <p>
+        You can add more than one remote, for example:
+        <br><br>
+        <code>git remote add backup https://gitlab.com/user/repo.git</code>
+        <br><br>
+        Push to another remote:
+        <br><br>
+        <code>git push backup main</code>
+    </p>
+    <hr>
+    <h3>🧪 Practice Task</h3>
+    <ul>
+        <b>
+            <li>"Create a new repo on GitHub"</li>
+            <li>"Connect your local repo using <code>git remote add</code>"</li>
+            <li>"Push your code using <code>git push</code>"</li>
+            <li>"lone the same repo in another folder using <code>git clone</code>"</li>
+        </b>
+    </ul>
+    <hr>
+    <h3>🧠 Best Practices</h3>
+    <ul>
+        <li>Always <code>git pull</code> before starting work</li>
+        <li>Use <code>git status</code> frequently</li>
+        <li>Commit often, push regularly</li>
+        <li>Use meaningful commit messages</li>
+        <li>Protect your branches on GitHub (e.g., <code>main</code>)</li>
+    </ul>
+    <hr>
+    <h3>🔚 Conclusion</h3>
+    <p>Remote repositories enable teamwork, backups, and deployment. With these commands and concepts, you’re ready to collaborate with others and contribute to open-source projects.</p>
+    <hr>
+    <h3 style="font-style: italic;">🎯 Up Next: Chapter 10 – Introduction to GitHub: Hosting, Accounts, and Repositories</h3>
+    <hr>
+    <a href="chapter_8.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_10.html"><button>Next</button></a>
+</body>
+</html>
