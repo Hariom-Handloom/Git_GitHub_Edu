@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Branching Strategies</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📘 Chapter 13: Git Branching Strategies (Main, Dev, Feature, Hotfix, etc.)</h2>
+    <hr>
+    <h3>🎯 Objectives</h3>
+    <p>
+        By the end of this chapter, you will:
+        <ul>
+            <li>Understand the purpose and importance of using branching strategies</li>
+            <li>Learn common branch types: <code>main</code>, <code>develop</code>, <code>feature</code>, <code>release</code>, and <code>hotfix</code></li>
+            <li>Know how to organize team workflows using these branches</li>
+            <li>Be able to apply best practices for managing branches in solo or collaborative projects</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🧩 Section 1: Why Use a Branching Strategy?</h3>
+    <h4>🔧 The Role of Branching in Git</h4>
+    <p>
+        Branching allows multiple developers (or yourself) to work on different tasks in parallel without affecting the main codebase. A branching strategy is a set of guidelines on how to use branches effectively.
+    </p>
+    <p style="font-style: italic;">📌 Without a strategy, your codebase can become disorganized and difficult to manage, especially in teams.</p>
+    <br>
+    <h4>🔍 Benefits of a Branching Strategy</h4>
+    <ul>
+        <li>Keeps development <b>organized</b> and <b>predictable</b></li>
+        <li>Supports <b>parallel work</b> by different team members</li>
+        <li>Helps prevent bugs from reaching production</li>
+        <li>Makes <b>code reviews and testing</b> easier</li>
+        <li>Ensures stable release pipelines</li>
+    </ul>
+    <hr>
+    <h3>🌿 Section 2: Common Branch Types and Their Purpose</h3>
+    <p>
+        Here are the most commonly used branches in professional Git workflows:
+    </p>
+    <table>
+        <tr>
+            <th>Branch</th>
+            <th>Purpose</th>
+            <th>Usually Exists In</th>
+        </tr>
+        <tr>
+            <td><code>main</code></td>
+            <td>Stable production-ready code</td>
+            <td>All projects</td>
+        </tr>
+        <tr>
+            <td><code>develop</code></td>
+            <td>Integration branch for features</td>
+            <td>Team projects</td>
+        </tr>
+        <tr>
+            <td><code>feature</code></td>
+            <td>Used to build specific new features</td>
+            <td>Per task</td>
+        </tr>
+        <tr>
+            <td><code>release</code></td>
+            <td>Prepares code for deployment</td>
+            <td>When releasing</td>
+        </tr>
+        <tr>
+            <td><code>hotfix</code></td>
+            <td>For urgent fixes to production</td>
+            <td>As needed</td>
+        </tr>
+    </table>
+    <br>
+    <h4>🧠 Quick Definitions</h4>
+    <ul>
+        <li><b>Main:</b> Always contains the latest stable code (often deployed to production).</li>
+        <li><b>Develop:</b> A working branch where all new features are merged before release.</li>
+        <li><b>Feature:</b> Short-lived branches to develop specific features or tasks.</li>
+        <li><b>Release:</b> Used to finalize a version before it's merged into <code>main</code>.</li>
+        <li><b>Hotfix:</b> Used to quickly patch bugs found in production.</li>
+    </ul>
+    <hr>
+    <h3>🛠️ Section 3: Real-World Example – Git Flow</h3>
+    <p>
+        Git Flow is a popular strategy that includes all the branches above. Here's how it works:
+        <h4>🔄 Git Flow Lifecycle</h4>
+        <ol>
+            <b><li>Start a Feature Branch</li></b>
+            <code>
+                git checkout develop
+                <br>
+                git checkout -b feature/login-system
+            </code>
+            <br><br>
+            <b><li>Finish Feature and Merge into <code>develop</code></li></b>
+            <code>
+                git checkout develop <br>
+                git merge feature/login-system
+            </code>
+            <br><br>
+            <b><li>Create a Release Branch (Optional)</li></b>
+            <code>
+                git checkout -b release/v1.0.0
+            </code>
+            <br><br>
+            <b><li>After Testing, Merge Release to <code>main</code> and <code>develop</code></li></b>
+            <code>
+                git checkout main <br>
+                git merge release/v1.0.0 <br>
+                git checkout develop <br>
+                git merge release/v1.0.0
+            </code>
+            <br><br>
+            <b><li>Hotfix Branch from <code>main</code> if Urgent Patch is Needed</li></b>
+            <code>
+                git checkout main <br>
+                git checkout -b hotfix/fix-crash
+            </code>
+        </ol>
+    </p>
+    <hr>
+    <h3>🔄 Section 4: When to Use Each Branch Type</h3>
+    <table>
+        <tr>
+            <th>Practice</th>
+            <th>Why It Matters</th>
+        </tr>
+        <tr>
+            <td>Use consistent naming (<code>feature/login-form</code>)	</td>
+            <td>Easy to identify branch purpose</td>
+        </tr>
+        <tr>
+            <td>Keep branches small and focused</td>
+            <td>Easier to review and merge</td>
+        </tr>
+        <tr>
+            <td>Rebase feature branches (optional)</td>
+            <td>Keep commit history clean</td>
+        </tr>
+        <tr>
+            <td>Regularly push to remote</td>
+            <td>Avoid losing work</td>
+        </tr>
+        <tr>
+            <td>Delete merged branches</td>
+            <td>Keeps repo clean and organized</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🧪 Section 6: Practice Tasks</h3>
+    <ol>
+        <li>
+            In a test repo:
+            <ul>
+                <li>Create a <code>develop</code> branch from <code>main</code></li>
+                <li>Create a <code>feature/readme-update</code> from <code>develop</code></li>
+                <li>Make changes, commit, and merge back to <code>develop</code></li>
+                <li>Simulate a release with <code>release/v1.0</code></li>
+                <li>Merge the release to <code>main</code> and <code>develop</code></li>
+                <li>Create and resolve a <code>hotfix/fix-typo</code></li>
+            </ul>
+        </li>
+        <br>
+        <li>
+            Try naming branches using this pattern:
+            <br>
+            <code>
+                feature/task-name <br>
+                release/version-name <br>
+                hotfix/bug-description
+            </code>
+        </li>
+    </ol>
+    <hr>
+    <h3>🔚 Conclusion</h3>
+    <p>
+        Git branching strategies help teams collaborate efficiently, reduce merge conflicts, and ensure high-quality code reaches production. Whether you're working solo or on a team, adopting a clear branching model like Git Flow improves your workflow and keeps your codebase maintainable.
+    </p>
+    <hr>
+    <h3 style="font-style: italic;">🎯 Next Up: Chapter 14 – Advanced Git Tools: Rebase, Stash, Cherry-pick, and Tags</h3>
+    <hr>
+    <a href="chapter_12.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_14.html"><button>Next</button></a>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Git Tools</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>📘 Chapter 14: Advanced Git Tools — Rebase, Stash, Cherry-pick, and Tags</h2>
+    <hr>
+    <h3>🎯 Objectives</h3>
+    <p>
+        By the end of this chapter, you will:
+        <ul>
+            <li>Understand what <code>rebase</code>, <code>stash</code>, <code>cherry-pick</code>, and <code>tags</code> do in Git</li>
+            <li>Know when and how to use them effectively</li>
+            <li>Learn real-world use cases to streamline advanced Git workflows</li>
+            <li>Avoid common pitfalls while working with these tools</li>
+        </ul>
+    </p>
+    <hr>
+    <h3>🧩 Section 1: Git Rebase – Streamlining Commit History</h3>
+    <h4>🔄 What is Git Rebase?</h4>
+    <p>
+        <code>git rebase</code> is used to move or combine a sequence of commits to a new base commit. It helps you create a <b>cleaner</b>, <b>linear commit history</b>.
+    </p>
+    <p style="font-style: italic;">🔍 Unlike <code>merge</code>, which creates a merge commit, <code>rebase</code> rewrites commit history.</p>
+    <br>
+    <h4>📌 Basic Rebase Usage</h4>
+    <p>
+        <code>
+            git checkout feature-branch <br>
+            git rebase main
+        </code>
+        <br><br>
+        This re-applies your feature branch commits on top of the latest main.
+    </p>
+    <br>
+    <h4>🔄 Rebase vs Merge</h4>
+    <table>
+        <tr>
+            <th>Merge</th>
+            <th>Rebase</th>
+        </tr>
+        <tr>
+            <td>Keeps all commits</td>
+            <td>Rewrites commit history</td>
+        </tr>
+        <tr>
+            <td>Adds a merge commit</td>
+            <td>No merge commit (linear history)</td>
+        </tr>
+        <tr>
+            <td>Easier for tracking timeline</td>
+            <td>Cleaner, linear history</td>
+        </tr>
+    </table>
+    <br>
+    <h4>⚠️ Caution</h4>
+    <p>
+        Do not rebase public branches (shared with others), as it changes commit history and may cause conflicts for collaborators.
+    </p>
+    <hr>
+    <h3>💾 Section 2: Git Stash – Saving Work Temporarily</h3>
+    <h4>📦 What is Git Stash?</h4>
+    <p>
+        <code>git stash</code> temporarily saves uncommitted changes so you can switch branches without committing them.
+    </p>
+    <p style="font-style: italic ;">💡 Helpful when you need to change context but aren’t ready to commit your work.</p>
+    <br>
+    <h4>📌 Common Stash Commands</h4>
+    <p>
+        <code>git stash &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Stash current changes</code> <br>
+        <code>git stash list &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# View stashed changes</code> <br>
+        <code>git stash apply &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Re-apply the latest stash</code> <br>
+        <code>git stash pop &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Apply and delete the stash</code>
+    </p>
+    <br>
+    <h4>✅ When to Use Stash</h4>
+    <ul>
+        <li>You’re working on something but need to switch branches quickly</li>
+        <li>You’re not ready to commit, but don’t want to lose your changes</li>
+    </ul>
+    <hr>
+    <h3>🧩 Section 3: Git Cherry-pick – Picking Specific Commits</h3>
+    <h4>🍒 What is Git Cherry-pick?</h4>
+    <p>
+        <code>git cherry-pick</code> allows you to apply specific commits from one branch to another.
+        <br><br>
+        <code>git cherry-pick <commit-hash></commit-hash></code>
+    </p>
+    <br>
+    <h4>✅ Use Cases</h4>
+    <ul>
+        <li>Apply a bug fix from one branch to another</li>
+        <li>Reuse a specific feature without merging the whole branch</li>
+        <li>Bring missed commits into a release branch</li>
+    </ul>
+    <br>
+    <h4>⚠️ Things to Keep in Mind</h4>
+    <ul>
+        <li>Creates a new commit with a <b>new hash</b></li>
+        <li>Can lead to duplicate changes if overused carelessly</li>
+    </ul>
+    <hr>
+    <h3>🔖 Section 4: Git Tags – Marking Important Commits</h3>
+    <h4>🔰 What is a Git Tag?</h4>
+    <p>A <b>tag</b> marks a specific point in your Git history. It’s commonly used for <b>releases</b>.</p>
+    <br>
+    <h4>📌 Creating and Listing Tags</h4>
+    <code>
+        git tag v1.0.0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Create a lightweight tag <br>
+        git tag -a v1.0.0 -m "Release" &nbsp;&nbsp;&nbsp;  # Annotated tag <br>
+        git tag   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # List all tags <br>
+        git show v1.0.0   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Show tag details
+    </code>
+    <br>
+    <h4>📤 Pushing Tags to Remote</h4>
+    <code>
+        git push origin v1.0.0 <br>
+        git push origin --tags  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         # Push all tags
+    </code>
+    <br>
+    <h4>✅ When to Use Tags</h4>
+    <ul>
+        <li>To mark stable releases (<code>v1.0.0</code>, <code>v2.1.1</code>, etc.)</li>
+        <li>To refer back to specific milestones</li>
+        <li>To enable users to download a specific version</li>
+    </ul>
+    <hr>
+    <h3>💡 Section 5: Summary of Advanced Git Commands</h3>
+    <table>
+        <tr>
+            <th>Tool</th>
+            <th>Purpose</th>
+            <th>Example Use Case</th>
+        </tr>
+        <tr>
+            <td><code>rebase</code></td>
+            <td>Rewrite history to a new base</td>
+            <td>Clean up history before merging</td>
+        </tr>
+        <tr>
+            <td><code>stash</code></td>
+            <td>Temporarily save work in progress</td>
+            <td>Switching branches without committing</td>
+        </tr>
+        <tr>
+            <td><code>cherry-pick</code></td>
+            <td>Apply selected commits from another branch</td>
+            <td>Bring a fix into another active branch</td>
+        </tr>
+        <tr>
+            <td><code>tag</code></td>
+            <td>Mark specific points in commit history</td>
+            <td>Indicate official releases (<code>v1.0.0</code>)</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>🧪 Section 6: Practice Tasks</h3>
+    <ol>
+        <li>Use <code>stash</code> to save your changes, switch to another branch, then re-apply them.</li>
+        <li>Create a <code>feature-x</code> branch and simulate rebasing it onto an updated <code>main</code>.</li>
+        <li>Cherry-pick a commit from one branch into another.</li>
+        <li>Cherry-pick a commit from one branch into another.</li>
+    </ol>
+    <hr>
+    <h3>🔚 Conclusion</h3>
+    <p>
+        Mastering Git's advanced tools — <code>rebase</code>, <code>stash</code>, <code>cherry-pick</code>, and <code>tags</code> — gives you powerful control over your commit history and workflow. These tools are essential for clean collaboration, precise versioning, and productive coding, especially in real-world and open-source development environments.
+    </p>
+    <hr>
+    <h3 style="font-style: italic;">🎯 Next Up: Chapter 15 – Git Best Practices and Real-World Workflow (Solo + Team Projects)</h3>
+    <hr>
+    <a href="chapter_13.html"><button>Back</button></a>
+    <a href="content.html"><button>Content Page</button></a>
+    <a href="chapter_15.html"><button>Next</button></a>
+</body>
+</html>
